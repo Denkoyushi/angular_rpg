@@ -1,0 +1,10 @@
+%div{ng_hide: "$storage.currentUser"}
+  %h2
+    Login
+  %form{ role: "form" }
+    %input{ type: "text", ng_model: "email", id: "email", placeholder: "Enter email" }
+    %br
+    %input{ type: "password", ng_model: "password", id: "password", placeholder: "Enter password" }
+    %br
+    %button{ ng_click: "loginUser()" } Submit
+  %a{ ng_click: "signUp()" }Sign Up

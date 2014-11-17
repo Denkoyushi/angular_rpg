@@ -1,0 +1,32 @@
+!!!
+%html{ 'ng-app' => 'angularRPG' }
+  %head
+    %title
+      = content_for?(:title) ? yield(:title) + " | Angular RPG" : "Angular RPG"
+    = stylesheet_link_tag    'application', media: 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  %body{ ui_view: "", ng_controller: "signUpCtrl", data_controller: controller_name, data_action: @action_name || action_name }
+    .container#main
+      .navbar.navbar-default.navbar-fixed-top
+        %h2.inline Angular RPG
+        %a{ng_click: "dashBoardGo()", class: "navbar-text pull-right"}
+          Dashboard
+        %span{ ng_show: "$storage.currentUser" }
+          Welcome {{$storage.currentUser.username}}!
+          %a{ng_click: "logOut()", class: "navbar-text pull-right"}
+            Logout
+        %span{ ng_hide: "$storage.currentUser" }
+          %a{ng_click: "logIn()", class: "navbar-text pull-right"}
+            Log in
+          %a{ng_click: "signUp()", class: "navbar-text pull-right"}
+            Sign Up
+      .app-wrapper
+        - if flash.any?
+          .flash
+            - flash.each do |type, msg|
+              %p{class: type}= msg
+
+        %section#application
+          = yield

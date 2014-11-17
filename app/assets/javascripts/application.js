@@ -12,5 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require angular
+//= require angular-route
+//= require angular-resource
+//= require angular-ui-router
+//= require angular-sanitize
+//= require sign_up
+//= require app
 //= require_tree .
